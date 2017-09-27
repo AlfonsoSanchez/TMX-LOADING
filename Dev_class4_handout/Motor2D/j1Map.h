@@ -11,7 +11,7 @@
 // ----------------------------------------------------
 struct tilesetInfo
 {
-	char* name = nullptr;
+	char* name= nullptr;
 	unsigned int firstgid = 0, tilewidth = 0, tileheight = 0, spacing = 0, margin = 0;
 };
 
@@ -48,19 +48,22 @@ public:
 
 	// Load new map
 	bool Load(const char* path);
-
+	
 private:
 	void LoadMap(pugi::xml_node&);
 	void LoadTileset();
+	
+	p2List<tilesetInfo> tileList;
 
 public:
 
-	// !!TODO 1: Add your struct for map info as public for now
-	
-	mapInfo mapInfo;
+	// !!TODO 1: Add your struct for map info as public for now	
+	mapInfo MapInfo;
 	tilesetInfo tilesetInfo;
+	
+	
 private:
-
+	
 	pugi::xml_document	map_file;
 	p2SString			folder;
 	bool				map_loaded;
