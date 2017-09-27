@@ -6,7 +6,7 @@
 #include "p2Point.h"
 #include "j1Module.h"
 
-// TODO 2: Create a struct to hold information for a TileSet
+// !!TODO 2: Create a struct to hold information for a TileSet
 // Ignore Terrain Types and Tile Types for now, but we want the image!
 // ----------------------------------------------------
 struct tilesetInfo
@@ -15,7 +15,7 @@ struct tilesetInfo
 	unsigned int firstgid = 0, tilewidth = 0, tileheight = 0, spacing = 0, margin = 0;
 };
 
-// TODO 1: Create a struct needed to hold the information to Map node
+// !!TODO 1: Create a struct needed to hold the information to Map node
 
 enum Orientation { orthogonal, isometric, staggered, hexagonal };
 enum Renderorder { right_down, right_up, left_down, left_up };
@@ -51,12 +51,14 @@ public:
 
 private:
 	void LoadMap(pugi::xml_node&);
+	void LoadTileset();
 
 public:
 
-	// TODO 1: Add your struct for map info as public for now
+	// !!TODO 1: Add your struct for map info as public for now
 	
 	mapInfo mapInfo;
+	tilesetInfo tilesetInfo;
 private:
 
 	pugi::xml_document	map_file;
