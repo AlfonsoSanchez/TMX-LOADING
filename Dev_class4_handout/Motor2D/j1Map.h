@@ -60,7 +60,7 @@ public:
 	// !!TODO 1: Add your struct for map info as public for now	
 	mapInfo MapInfo;
 	tilesetInfo tilesetInfo;
-	
+	int tilesetcount = 0;
 	
 private:
 	

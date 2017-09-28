@@ -47,9 +47,9 @@ bool j1Map::CleanUp()
 {
 	LOG("Unloading map");
 
-	// TODO 2: Make sure you clean up any memory allocated
+	// !!TODO 2: Make sure you clean up any memory allocated
 	// from tilesets / map
-	
+	tileList.clear();
 
 
 	map_file.reset();
@@ -158,6 +158,7 @@ void j1Map::LoadTileset()
 		tilesetInfo.spacing = tileset.attribute("spacing").as_int();
 		tilesetInfo.margin = tileset.attribute("margin").as_int();
 		tileList.add(tilesetInfo);
+		tilesetcount++;
 	}
 	
 
