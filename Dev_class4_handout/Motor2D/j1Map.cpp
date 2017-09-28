@@ -35,14 +35,16 @@ void j1Map::Draw()
 
 	// TODO 6: Iterate all tilesets and draw all their 
 	// images in 0,0 (you should have only one tileset for now)
-	
+
+
+	App->render->Blit(map,0,0);
 }
 
 // Called before quitting
 bool j1Map::CleanUp()
 {
 	LOG("Unloading map");
-
+	
 	// TODO 2: Make sure you clean up any memory allocated
 	// from tilesets / map
 
@@ -83,7 +85,7 @@ bool j1Map::Load(const char* file_name)
 
 	if(ret == true)
 	{
-		// TODO 5: LOG all the data loaded
+		// !!TODO 5: LOG all the data loaded
 		// iterate all tilesets and LOG everything
 		LOG("Successfully load map : %s", file_name);
 		LOG("width = %i heigth = %i",MapInfo.width, MapInfo.height);
