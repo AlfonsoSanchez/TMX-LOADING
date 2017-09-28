@@ -36,6 +36,7 @@ void j1Map::Draw()
 	// TODO 6: Iterate all tilesets and draw all their 
 	// images in 0,0 (you should have only one tileset for now)
 
+	SDL_Texture* map = App->tex->Load("Game/maps/tmw_desert_spacing");
 
 	App->render->Blit(map,0,0);
 }
@@ -44,10 +45,10 @@ void j1Map::Draw()
 bool j1Map::CleanUp()
 {
 	LOG("Unloading map");
-	
+
 	// TODO 2: Make sure you clean up any memory allocated
 	// from tilesets / map
-
+	
 
 
 	map_file.reset();
