@@ -26,6 +26,14 @@ struct mapInfo
 	unsigned int width=0, height=0, tilewidth=0, tileheight=0, nextobjectid=0;
 
 };
+//HOMEWORK 1- STRUCT LAYER
+
+struct layerInfo
+{
+	p2SString name = nullptr;
+	int width = 0, height = 0;
+	p2List<int> gid;
+};
 
 // ----------------------------------------------------
 class j1Map : public j1Module
@@ -52,7 +60,7 @@ public:
 private:
 	void LoadMap(pugi::xml_node&);
 	void LoadTileset();
-	
+	void LoadLayer();
 	p2List<tilesetInfo> tileList;
 
 public:
@@ -61,6 +69,7 @@ public:
 	mapInfo MapInfo;
 	tilesetInfo tilesetInfo;
 	int tilesetcount = 0;
+	layerInfo LayerInfo;
 	
 private:
 	

@@ -49,8 +49,10 @@ bool j1Map::CleanUp()
 
 	// !!TODO 2: Make sure you clean up any memory allocated
 	// from tilesets / map
+	tilesetInfo.name.Clear();
 	tileList.clear();
-
+	LayerInfo.gid.clear();
+	LayerInfo.name.Clear();
 
 	map_file.reset();
 
@@ -82,8 +84,8 @@ bool j1Map::Load(const char* file_name)
 	// !!TODO 4: Create and call a private function to load a tileset
 	// remember to support more any number of tilesets!
 		
-		
 		LoadTileset();
+		LoadLayer();
 
 	if(ret == true)
 	{
@@ -159,11 +161,23 @@ void j1Map::LoadTileset()
 		tilesetInfo.margin = tileset.attribute("margin").as_int();
 		tileList.add(tilesetInfo);
 		tilesetcount++;
-	}
-	
+	}	
+}
+//Load all layers
+void j1Map::LoadLayer()
+{
+	for (pugi::xml_node layerset = map_file.child("map").child("layer"); layerset; layerset = layerset.next_sibling("layer"))
+	{
+		p2SString tmp("%s", layerset.attribute("name").as_string());
+		LayerInfo.name = tmp;
 
-	
-	
-	
-	
+		LayerInfo.height = layerset.attribute("height").as_int();
+		LayerInfo.width = layerset.attribute("width").as_int();
+
+		for (pugi::xml_node dataLayer = layerset.child("data").child("tile"); dataLayer; dataLayer = dataLayer.next_sibling("tile"))
+		{
+			LayerInfo.gid.add(dataLayer.attribute("gid").as_int());
+
+		}
+	}
 }
