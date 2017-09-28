@@ -98,6 +98,9 @@ bool j1Map::Load(const char* file_name)
 		LOG("name: %s firstgid: %i", tilesetInfo.name.GetString(), tilesetInfo.firstgid);
 		LOG("tile width: %i tile height: %i", tilesetInfo.tilewidth, tilesetInfo.tileheight);
 		LOG("spacing: %i margin : %i",tilesetInfo.spacing, tilesetInfo.margin);
+
+		
+		
 	}
 
 	map_loaded = ret;
@@ -177,7 +180,8 @@ void j1Map::LoadLayer()
 		for (pugi::xml_node dataLayer = layerset.child("data").child("tile"); dataLayer; dataLayer = dataLayer.next_sibling("tile"))
 		{
 			LayerInfo.gid.add(dataLayer.attribute("gid").as_int());
-
+			//HOMEWORK LOG ALL LAYERS
+			LOG("%i", dataLayer.attribute("gid").as_int());
 		}
 	}
 }
