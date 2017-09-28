@@ -33,12 +33,13 @@ void j1Map::Draw()
 	if(map_loaded == false)
 		return;
 
-	// TODO 6: Iterate all tilesets and draw all their 
+	// !!TODO 6: Iterate all tilesets and draw all their 
 	// images in 0,0 (you should have only one tileset for now)
-
-	SDL_Texture* map = App->tex->Load("Game/maps/tmw_desert_spacing");
-
-	App->render->Blit(map,0,0);
+	for (int i = 0; i < tileList.count(); i++)
+	{
+		SDL_Texture* map = App->tex->Load(tilesetInfo.name.GetString());
+		App->render->Blit(map, 0, 0);
+	}
 }
 
 // Called before quitting
@@ -147,9 +148,8 @@ void j1Map::LoadTileset()
 	for (pugi::xml_node tileset = map_file.child("map").child("tileset"); tileset; tileset = tileset.next_sibling("tileset"))
 	{
 		
-		
-		
-		tilesetInfo.name = tileset.attribute("name").as_string();
+		p2SString tmp("%s%s%s", folder.GetString(),tileset.attribute("name").as_string(),".png");
+		tilesetInfo.name = tmp;
 		
 		
 		tilesetInfo.tilewidth = tileset.attribute("tilewidth").as_int();
