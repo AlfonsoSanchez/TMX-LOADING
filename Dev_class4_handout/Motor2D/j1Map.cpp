@@ -75,7 +75,7 @@ bool j1Map::Load(const char* file_name)
 		LoadMap(mapInfo);
 	}
 
-	// --TODO 4: Create and call a private function to load a tileset
+	// !!TODO 4: Create and call a private function to load a tileset
 	// remember to support more any number of tilesets!
 		
 		
@@ -146,7 +146,9 @@ void j1Map::LoadTileset()
 		
 		
 		
-		//tilesetInfo.name = tileset.attribute("name").as_string();
+		tilesetInfo.name = tileset.attribute("name").as_string();
+		
+		
 		tilesetInfo.tilewidth = tileset.attribute("tilewidth").as_int();
 		tilesetInfo.tileheight = tileset.attribute("tileheight").as_int();
 		tilesetInfo.firstgid = tileset.attribute("firstgid").as_int();

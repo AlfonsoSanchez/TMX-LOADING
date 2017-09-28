@@ -11,7 +11,7 @@
 // ----------------------------------------------------
 struct tilesetInfo
 {
-	char* name= nullptr;
+	p2SString name= nullptr;
 	unsigned int firstgid = 0, tilewidth = 0, tileheight = 0, spacing = 0, margin = 0;
 };
 
