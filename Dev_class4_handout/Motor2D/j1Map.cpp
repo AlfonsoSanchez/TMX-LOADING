@@ -89,7 +89,7 @@ bool j1Map::Load(const char* file_name)
 		LOG("width = %i heigth = %i",MapInfo.width, MapInfo.height);
 		LOG("title width = %i title heigth = %i",MapInfo.tilewidth, MapInfo.tileheight);
 		LOG("----TILESET---");
-		LOG("name: %s firstgid: %i", tilesetInfo.name, tilesetInfo.firstgid);
+		LOG("name: %s firstgid: %i", tilesetInfo.name.GetString(), tilesetInfo.firstgid);
 		LOG("tile width: %i tile height: %i", tilesetInfo.tilewidth, tilesetInfo.tileheight);
 		LOG("spacing: %i margin : %i",tilesetInfo.spacing, tilesetInfo.margin);
 	}
