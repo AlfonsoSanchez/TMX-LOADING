@@ -62,6 +62,7 @@ private:
 	void LoadTileset();
 	void LoadLayer();
 	p2List<tilesetInfo> tileList;
+	p2List<layerInfo> layerList;
 
 public:
 

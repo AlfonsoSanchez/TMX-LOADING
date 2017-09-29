@@ -183,5 +183,7 @@ void j1Map::LoadLayer()
 			//HOMEWORK LOG ALL LAYERS
 			LOG("%i", dataLayer.attribute("gid").as_int());
 		}
+		layerList.add(LayerInfo);
 	}
+
 }
