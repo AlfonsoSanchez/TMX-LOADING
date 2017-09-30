@@ -32,14 +32,16 @@ void j1Map::Draw()
 {
 	if(map_loaded == false)
 		return;
-
+	
 	// !!TODO 6: Iterate all tilesets and draw all their 
 	// images in 0,0 (you should have only one tileset for now)
 	for (int i = 0; i < tileList.count(); i++)
 	{
-		SDL_Texture* map = App->tex->Load(tilesetInfo.name.GetString());
+		 map = App->tex->Load(tilesetInfo.name.GetString());
 		App->render->Blit(map, 0, 0);
+		
 	}
+	App->tex->UnLoad(map);
 }
 
 // Called before quitting
@@ -50,11 +52,14 @@ bool j1Map::CleanUp()
 	// !!TODO 2: Make sure you clean up any memory allocated
 	// from tilesets / map
 	tilesetInfo.name.Clear();
-	tileList.clear();
 	LayerInfo.gid.clear();
 	LayerInfo.name.Clear();
 
+	tileList.clear();
+	//layerList.clear();
+
 	map_file.reset();
+	
 
 	return true;
 }
@@ -66,7 +71,7 @@ bool j1Map::Load(const char* file_name)
 	p2SString tmp("%s%s", folder.GetString(), file_name);
 
 	pugi::xml_parse_result result = map_file.load_file(tmp.GetString());
-	pugi::xml_node mapInfo = map_file.child("map");
+	
 	if(result == NULL)
 	{
 		LOG("Could not load map xml file %s. pugi error: %s", file_name, result.description());
@@ -75,7 +80,7 @@ bool j1Map::Load(const char* file_name)
 
 	if(ret == true)
 	{
-		
+		pugi::xml_node mapInfo = map_file.child("map");
 		// !!TODO 3: Create and call a private function to load and fill
 		// all your map data
 		LoadMap(mapInfo);
@@ -102,7 +107,7 @@ bool j1Map::Load(const char* file_name)
 		
 		
 	}
-
+	tmp.Clear();
 	map_loaded = ret;
 
 	return ret;
@@ -164,6 +169,7 @@ void j1Map::LoadTileset()
 		tilesetInfo.margin = tileset.attribute("margin").as_int();
 		tileList.add(tilesetInfo);
 		tilesetcount++;
+		tmp.Clear();
 	}	
 }
 //Load all layers
@@ -184,6 +190,7 @@ void j1Map::LoadLayer()
 			LOG("%i", dataLayer.attribute("gid").as_int());
 		}
 		layerList.add(LayerInfo);
+		tmp.Clear();
 	}
 
 }
